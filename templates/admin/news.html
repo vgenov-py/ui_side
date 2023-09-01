@@ -1,0 +1,43 @@
+{%extends 'base.html'%}
+{%block main%}
+
+
+<div id="msgs_div" class="w-75">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+              {% if category == 'message' %}
+                <div class="alert alert-warning" role="alert">
+              {% else %}
+                <div class="alert alert-{{ category }}" role="alert">
+              {% endif %}
+                {{ message }}
+              </div>
+          {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
+
+<form class="w-75" method="post" action="/wood/news">
+    <div class="mb-3"><h3>Crear noticia</h3></div>
+    <div class="input-group mb-3">
+        <input name="title" type="text" class="form-control" placeholder="BNE Rocks" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <span class="input-group-text" id="basic-addon2">Title</span>
+    </div>      
+    <div class="input-group mb-3">
+        <span class="input-group-text">Body</span>
+        <textarea class="form-control" aria-label="With textarea" name="body"></textarea>
+    </div>
+    <button type="submit" class="btn btn-dark">Crear</button>
+</form>
+<script>
+    try {
+        setInterval(
+            () => document.querySelector("#msgs_div").style.display = "none"
+        ,2000);
+        
+    } catch (error) {
+        console.log("aaa")
+    }
+</script>
+{%endblock%}

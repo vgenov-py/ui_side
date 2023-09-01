@@ -1,0 +1,127 @@
+{%extends 'base.html'%}
+{%block main%}
+<div class="d-flex justify-content-center mx-auto flex-wrap flex-column align-items-center">
+  <h3 class="mx-auto text-center text-bne mb-4 mt-2" style="width: 320px;">Campos por frecuencias</h3>
+  <div class="d-flex justify-content-around bg-secondary align-items-center w-25 text-white rounded-1 mb-4" style="min-height: 50px;max-width: 130px;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-stopwatch" viewBox="0 0 16 16">
+      <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z"/>
+      <path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z"/>
+    </svg>
+    <p class="text-white fs-3" style="margin-bottom: 0px !important;" id="p_time">
+      {{mean_time}}
+    </p>
+    <input type="hidden" value="{{mean_time}}" id="mean_time">
+  </div>
+  <div class="w-75 mx-auto">
+    <canvas id="canvas_radar"></canvas>
+  </div>
+  <div class="w-75 mx-auto " >
+    <div id="charts" class="mb-5 d-flex flex-wrap justify-content-center"></div>  
+  </div>
+</div>
+<input type="hidden" name="" id="frecuency_data" value="{{data}}">
+<input type="hidden" name="" id="values_frecuencies" value="{{values_frecuencies}}">
+<style>
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
+<script>
+  const fields_frecuencies = document.getElementById('fields_frecuencies');
+  const frecuency_data = JSON.parse(document.querySelector("#frecuency_data").value);
+  const values_frecuencies = JSON.parse(document.querySelector("#values_frecuencies").value);
+  console.log(values_frecuencies);  
+  Object.keys(frecuency_data).forEach((dataset) => {
+    const canvas = document.createElement("canvas");
+    canvas.id = dataset;
+    canvas.className = "dataset_canvas mx-3";
+    canvas.style.maxWidth = "300px";
+    canvas.style.minHeight = "300px";
+    canvas.style.maxHeight = "300px";
+    document.querySelector("#charts").appendChild(canvas);
+  });
+
+  const create_frecuency = (dataset) => {
+    const total = () => {
+      result = 0;
+      Object.values(frecuency_data[dataset]).forEach((v) => result = result + v);
+      return result
+    }
+    const proportions = Object.values(frecuency_data[dataset]).map((f) => (f/total())*100);
+    new Chart(document.querySelector(`#${dataset}`), {
+    type: 'bar',
+    data: {
+      labels:Object.keys(frecuency_data[dataset]),
+      datasets: [{
+        label: dataset,
+        data: proportions,
+        borderWidth: 1,
+        borderRadius:5,
+        }
+    ]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+  };
+
+  const create_radar_values_frecuencies = () => {
+    const canvas_radar = document.querySelector("#canvas_radar");
+    values_frecuencies;
+    const labels = []
+    const dicts = Object.values(values_frecuencies);
+    for (let list of dicts) {
+      list.forEach((d) => labels.push(Object.keys(d)[0]))
+    };
+    console.log(labels)
+    const datasets = [];
+    let counter = 0;
+    for (dataset of Object.keys(values_frecuencies)) {
+      values = [];
+      for (let i = 0;i<counter ;i++) {
+        values.push(0);
+      };
+      for (v of Object.values(values_frecuencies[dataset])) {
+        values.push(Object.values(v)[0]);
+        counter ++;
+      }
+      details = {
+        label:dataset,
+        data: values
+      }
+      console.log(details);
+      datasets.push(details);
+    };
+    console.log(datasets)
+    const data = {
+      labels: labels,
+      datasets: datasets
+    };
+
+    new Chart(canvas_radar, {
+      type: "radar",
+      data: data,
+      options: {
+      responsive: true,
+      plugins: {
+        title: {
+          display: true,
+          text: 'TEST'
+        }
+      }
+    }
+    });
+  };
+
+  create_radar_values_frecuencies();
+
+  document.querySelectorAll(".dataset_canvas").forEach((canva) => {
+    create_frecuency(canva.id);
+  });
+  // create_frecuency("per");
+</script>
+  
+{%endblock%}

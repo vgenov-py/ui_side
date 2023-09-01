@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+{%block main%}
+<p class="my-0">{{line}}</p>
+
+<table class="table table-stripped">
+    <thead>
+        <tr>
+            <th scope="col">time</th>
+            <th scope="col">code</th>
+            <th scope="col">error</th>
+            <th scope="col">message</th>
+        </tr>
+    </thead>
+    <tbody>
+    {%for line in data%}
+      <tr>
+        <th scope="row">{{line.split("|")[0]}}</th>
+        <td>{{line.split("|")[1]}}</td>
+        <td>{{line.split("|")[2]}}</td>
+        <td>{{line.split("|")[3]}}</td>
+      </tr>
+    {%endfor%}
+    </tbody>
+  </table>
+{%endblock%}

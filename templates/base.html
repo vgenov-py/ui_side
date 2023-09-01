@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> If you stats-->
+    <meta charset="UTF-8">
+    {%block head%}
+    {%endblock%}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+    <title>Thunder</title>
+</head>
+<body class="">
+    {%if session.id%}
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+    {%else%}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    {%endif%}
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/" style="width:50px">
+        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-lightning-charge" viewBox="0 0 16 16">
+            <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09zM4.157 8.5H7a.5.5 0 0 1 .478.647L6.11 13.59l5.732-6.09H9a.5.5 0 0 1-.478-.647L9.89 2.41 4.157 8.5z"/>
+        </svg>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="">
+              <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 text-bne" data-bs-toggle="collapse" data-bs-target="#docs-collapse" aria-expanded="false">
+                  menu_1
+              </button>
+              <div class="collapse show" id="docs-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4 ps-2">
+                    <li class="mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle" viewBox="0 0 16 16">
+                            <path d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM9.283 4.002V12H7.971V5.338h-.065L6.072 6.656V5.385l1.899-1.383h1.312Z"/>
+                        </svg>
+                        <a href="/api/#version" class="link-body-emphasis d-inline-flex text-decoration-none rounded">submenu_1</a></li>
+                    <li class="mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-reply" viewBox="0 0 16 16">
+                            <path d="M6.598 5.013a.144.144 0 0 1 .202.134V6.3a.5.5 0 0 0 .5.5c.667 0 2.013.005 3.3.822.984.624 1.99 1.76 2.595 3.876-1.02-.983-2.185-1.516-3.205-1.799a8.74 8.74 0 0 0-1.921-.306 7.404 7.404 0 0 0-.798.008h-.013l-.005.001h-.001L7.3 9.9l-.05-.498a.5.5 0 0 0-.45.498v1.153c0 .108-.11.176-.202.134L2.614 8.254a.503.503 0 0 0-.042-.028.147.147 0 0 1 0-.252.499.499 0 0 0 .042-.028l3.984-2.933zM7.8 10.386c.068 0 .143.003.223.006.434.02 1.034.086 1.7.271 1.326.368 2.896 1.202 3.94 3.08a.5.5 0 0 0 .933-.305c-.464-3.71-1.886-5.662-3.46-6.66-1.245-.79-2.527-.942-3.336-.971v-.66a1.144 1.144 0 0 0-1.767-.96l-3.994 2.94a1.147 1.147 0 0 0 0 1.946l3.994 2.94a1.144 1.144 0 0 0 1.767-.96v-.667z"/>
+                        </svg>
+                        <a href="/api/#responses" class="link-body-emphasis d-inline-flex text-decoration-none rounded">submenu_2</a></li>
+                  </ul>
+                </div>
+            </li>
+            <li>
+              <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 text-bne" data-bs-toggle="collapse" data-bs-target="#diagrams-collapse" aria-expanded="false">
+                  menu_2
+              </button>
+              <div class="collapse show" id="diagrams-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4 ps-2">
+                    <li class="mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
+                        </svg>
+                        <a href="/api/schema?dataset=per" class="link-body-emphasis d-inline-flex text-decoration-none rounded">submenu_1</a></li>
+                    <li class="mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
+                            <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+                        </svg>
+                        <a href="/api/schema?dataset=mon" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Monografías</a></li>
+                    <li class="mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
+                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+                        </svg>
+                        <a href="/api/schema?dataset=ent" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Entidades</a></li>
+                    <li class="mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.057.09V14l.002.008a.147.147 0 0 0 .016.033.617.617 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.619.619 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411z"/>
+                        </svg>
+                        <a href="/api/schema?dataset=geo" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Geográfico</a></li>
+                  </ul>
+                </div>
+            </li>
+            <li>
+              <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 text-bne" data-bs-toggle="collapse" data-bs-target="#stats-collapse" aria-expanded="false">
+                  menu_3
+              </button>
+              <div class="collapse show" id="stats-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4 ps-2">
+                  <li class="mb-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-line" viewBox="0 0 16 16">
+                        <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2zm1 12h2V2h-2v12zm-3 0V7H7v7h2zm-5 0v-3H2v3h2z"/>
+                    </svg>
+                    <a href="/#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">submenu_1</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+      </div>
+       
+    </div>
+  </nav>
+  <main class="d-flex flex-nowrap">
+
+        <!-- sidebar: -->
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" id="sidebar" style="max-width: 280px; min-width: 250px;">
+          <!-- <hr> -->
+          <ul class="nav nav-pills flex-column mb-auto">
+            <li class="">
+              <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 text-bne" data-bs-toggle="collapse" data-bs-target="#docs-collapse" aria-expanded="true">
+                  menu_1
+              </button>
+              <div class="collapse show" id="docs-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4 ps-2">
+                    <li class="mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle" viewBox="0 0 16 16">
+                            <path d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM9.283 4.002V12H7.971V5.338h-.065L6.072 6.656V5.385l1.899-1.383h1.312Z"/>
+                        </svg>
+                        <a href="/#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">submenu_1</a></li>
+                    <li class="mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-reply" viewBox="0 0 16 16">
+                            <path d="M6.598 5.013a.144.144 0 0 1 .202.134V6.3a.5.5 0 0 0 .5.5c.667 0 2.013.005 3.3.822.984.624 1.99 1.76 2.595 3.876-1.02-.983-2.185-1.516-3.205-1.799a8.74 8.74 0 0 0-1.921-.306 7.404 7.404 0 0 0-.798.008h-.013l-.005.001h-.001L7.3 9.9l-.05-.498a.5.5 0 0 0-.45.498v1.153c0 .108-.11.176-.202.134L2.614 8.254a.503.503 0 0 0-.042-.028.147.147 0 0 1 0-.252.499.499 0 0 0 .042-.028l3.984-2.933zM7.8 10.386c.068 0 .143.003.223.006.434.02 1.034.086 1.7.271 1.326.368 2.896 1.202 3.94 3.08a.5.5 0 0 0 .933-.305c-.464-3.71-1.886-5.662-3.46-6.66-1.245-.79-2.527-.942-3.336-.971v-.66a1.144 1.144 0 0 0-1.767-.96l-3.994 2.94a1.147 1.147 0 0 0 0 1.946l3.994 2.94a1.144 1.144 0 0 0 1.767-.96v-.667z"/>
+                        </svg>
+                        <a href="/#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">submenu_2</a></li>
+                  </ul>
+                </div>
+            </li>
+            <li>
+              <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 text-bne" data-bs-toggle="collapse" data-bs-target="#diagrams-collapse" aria-expanded="true">
+                  menu_2
+              </button>
+              <div class="collapse show" id="diagrams-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4 ps-2">
+                    <li class="mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
+                        </svg>
+                        <a href="/#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">submenu_1</a></li>
+                  </ul>
+                </div>
+            </li>
+            <li>
+              <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 text-bne" data-bs-toggle="collapse" data-bs-target="#stats-collapse" aria-expanded="true">
+                  menu_3
+              </button>
+              <div class="collapse show" id="stats-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-4 ps-2">
+                  <li class="mb-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-line" viewBox="0 0 16 16">
+                        <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2zm1 12h2V2h-2v12zm-3 0V7H7v7h2zm-5 0v-3H2v3h2z"/>
+                    </svg>
+                    {%if session.id%}
+                    <a href="/wood/stats" class="link-body-emphasis d-inline-flex text-decoration-none rounded">submenu_1</a></li>
+                    {%else%}
+                    <a href="/api/stats" class="link-body-emphasis d-inline-flex text-decoration-none rounded">submenu_1</a></li>
+                    {%endif%}
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="container mt-3" id="main">
+
+            {%block main%}
+            {%endblock%}
+        </div>
+    </main>
+    {%if session.id%}
+    <footer class="py-3 text-white bg-secondary">
+    {%else%}
+    <footer class="py-3 text-white bg-dark">
+    {%endif%}
+        <ul class="nav justify-content-center pb-3 mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-lightning-charge" viewBox="0 0 16 16">
+                <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09zM4.157 8.5H7a.5.5 0 0 1 .478.647L6.11 13.59l5.732-6.09H9a.5.5 0 0 1-.478-.647L9.89 2.41 4.157 8.5z"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-airplane-engines" viewBox="0 0 16 16">
+                <path d="M8 0c-.787 0-1.292.592-1.572 1.151A4.347 4.347 0 0 0 6 3v3.691l-2 1V7.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.191l-1.17.585A1.5 1.5 0 0 0 0 10.618V12a.5.5 0 0 0 .582.493l1.631-.272.313.937a.5.5 0 0 0 .948 0l.405-1.214 2.21-.369.375 2.253-1.318 1.318A.5.5 0 0 0 5.5 16h5a.5.5 0 0 0 .354-.854l-1.318-1.318.375-2.253 2.21.369.405 1.214a.5.5 0 0 0 .948 0l.313-.937 1.63.272A.5.5 0 0 0 16 12v-1.382a1.5 1.5 0 0 0-.83-1.342L14 8.691V7.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v.191l-2-1V3c0-.568-.14-1.271-.428-1.849C9.292.591 8.787 0 8 0ZM7 3c0-.432.11-.979.322-1.401C7.542 1.159 7.787 1 8 1c.213 0 .458.158.678.599C8.889 2.02 9 2.569 9 3v4a.5.5 0 0 0 .276.447l5.448 2.724a.5.5 0 0 1 .276.447v.792l-5.418-.903a.5.5 0 0 0-.575.41l-.5 3a.5.5 0 0 0 .14.437l.646.646H6.707l.647-.646a.5.5 0 0 0 .14-.436l-.5-3a.5.5 0 0 0-.576-.411L1 11.41v-.792a.5.5 0 0 1 .276-.447l5.448-2.724A.5.5 0 0 0 7 7V3Z"/>
+            </svg>
+        </ul>
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="mailto:yourmail@company.com" class="nav-link px-2 text-light" target="_blank">¿Algo va mal? ¡Por favor contacta con nosotros!</a></li>
+        </ul>
+   </footer>
+</body>
+</html>
+<style>
+    #alert {
+        top: 5rem;
+        left: auto;
+        right: auto;
+        display: flex;
+    }
+    .btn-toggle::before {
+
+        width: 1.25em;
+        line-height: 0;
+        content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+        transition: transform .35s ease;
+        transform-origin: .5em 50%;
+    }
+    .text-bne {
+        color: #636363;
+    }
+
+    @media only screen and (max-width: 992px) {
+        #sidebar {
+            width: 100px !important;
+            display: none !important;
+        }
+
+        #main {
+            min-height: 800px;
+        }
+    }
+    
+    @media only screen and (min-width: 992px) {
+        #navbarNav {
+            display: none !important;
+        }
+
+        #main {
+            min-height: 800px;
+        }
+
+
+    }
+
+</style>
+
+<script>
+    // window.onresize = () => {
+    //     if (window.innerWidth >= 992) {
+    //         document.querySelector("#sidebar").className += "visually-hidden";
+    //     }
+    // };
+</script>
