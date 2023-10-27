@@ -6,11 +6,10 @@ import json
 
 def create_app():
     app = Flask(__name__)
-    app.config["SECRET_KEY"] = "SECRET_KEY"
+    app.config.from_file(".config.json", load=json.load)
     app.config["TIMEZONE"] = "Europe/Madrid"
     app.config['JSON_SORT_KEYS'] = False
     app.config['JSON_AS_ASCII'] = False
-    # app.config.from_file("config.json", load=json.load)
     app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=10)
     app.register_blueprint(web, url_prefix="/")
     app.register_blueprint(errors)

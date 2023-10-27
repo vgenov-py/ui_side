@@ -37,7 +37,7 @@ class Auth:
                         self.con.commit()
                     except Exception as e:
                         pass
-                    return redirect(url_for("admin.t_stats"))
+                    return redirect(url_for("web.t_home"))
             except IndexError as e:
                 print(e)
                 pass
@@ -49,13 +49,14 @@ class Auth:
         def inner(*args, **kwargs):
             user_id = session.get("id")
             user = tuple(self.cur.execute(f"SELECT token from users where id = '{user_id}'"))
+            print(user)
             try:
                 user = user[0]
                 user_token = user[0]
                 if user_token == session.get("token"):
                     return f(*args, **kwargs)
             except:
-                return redirect(url_for("api.r_home"))
+                return redirect(url_for("web.t_login"))
             
         return inner
     
@@ -71,36 +72,6 @@ class Auth:
                         token
                         );''')
         self.con.commit()
-
-    def enter(self, query:str, length:int=None, date:str=None, dataset:str=None, time:float=None,is_from_web:bool=False ,error:bool=None, update:bool=False):
-        if update:
-            last_id = tuple(self.cur.execute("SELECT id FROM queries_fts ORDER BY date DESC LIMIT 1;"))[0][0]
-            query_str = f'''
-                        UPDATE queries_fts SET length = ?, date=?, dataset=?, time=?, is_from_web=?, error=0 WHERE id = '{last_id}';
-                        '''
-            try:
-                self.cur.execute(query_str, (length, date, dataset, time, True if is_from_web else False))
-                self.con.commit()
-            except Exception as e:
-                pass
-        else:
-            query_str = f'''
-                    INSERT INTO queries_fts VALUES(
-                    '{uuid4().hex}',
-                    ?,
-                    ?,
-                    ?,
-                    ?,
-                    ?,
-                    ?,
-                    ?
-                    )
-                    '''
-            try:
-                self.cur.execute(query_str, (query, length, date, dataset, time,is_from_web ,error))
-                self.con.commit()
-            except Exception as e:
-                pass
 
     @property
     def users(self):
